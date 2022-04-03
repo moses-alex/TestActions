@@ -23,3 +23,11 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Publish app for deploy
+      run: dotnet publish --configuration Release --no-build --output './published'
+    - name: deploy to Azure
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'cidepoly'
+        publish-profile: ${{secerts.PUBLISH_PROFILE}
+        package: './published'
