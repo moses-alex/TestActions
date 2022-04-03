@@ -29,5 +29,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'cidepoly'
-        publish-profile: ${{secerts.PUBLISH_PROFILE}}
+        publish-profile: ${{ secerts.PUBLISH_PROFILE }}
         package: './published'
